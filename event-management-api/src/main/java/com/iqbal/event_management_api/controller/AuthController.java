@@ -33,8 +33,11 @@ public class AuthController {
         return ResponseEntity.ok(userService.register(request));
     }
 
+
+
+
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<String> login(@org.jetbrains.annotations.NotNull @RequestBody LoginRequest request) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         String token = jwtTokenProvider.generateToken(authentication);
