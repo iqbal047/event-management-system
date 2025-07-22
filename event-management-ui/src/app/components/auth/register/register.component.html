@@ -1,1 +1,32 @@
-<p>register works!</p>
+<div class="register-container">
+  <h2>Register</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" [(ngModel)]="registerRequest.email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" [(ngModel)]="registerRequest.password" name="password" required>
+    </div>
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" [(ngModel)]="registerRequest.firstName" name="firstName" required>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" [(ngModel)]="registerRequest.lastName" name="lastName" required>
+    </div>
+    <div class="form-group">
+      <label for="role">Role</label>
+      <select id="role" [(ngModel)]="registerRequest.role" name="role">
+        <option value="PARTICIPANT">Participant</option>
+        <option value="ORGANIZER">Organizer</option>
+        <option value="ADMIN">Admin</option>
+      </select>
+    </div>
+    <button type="submit">Register</button>
+    <p *ngIf="error" class="error">{{ error }}</p>
+    <p>Already have an account? <a routerLink="/login">Login</a></p>
+  </form>
+</div>

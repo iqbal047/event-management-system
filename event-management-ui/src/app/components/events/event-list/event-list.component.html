@@ -1,1 +1,18 @@
-<p>event-list works!</p>
+<div class="event-list">
+  <h2>Events</h2>
+  <button routerLink="/events/new">Create New Event</button>
+  <div class="event-grid">
+    <div class="event-card" *ngFor="let event of events">
+      <h3>{{ event.title }}</h3>
+      <p>{{ event.description }}</p>
+      <p><strong>Start:</strong> {{ event.startDate | date:'medium' }}</p>
+      <p><strong>Location:</strong> {{ event.location }}</p>
+      <p><strong>Status:</strong> {{ event.status }}</p>
+      <div class="actions">
+        <button (click)="editEvent(event.id)">Edit</button>
+        <button (click)="deleteEvent(event.id)">Delete</button>
+        <button [routerLink]="['/events', event.id, 'participants']">Manage Participants</button>
+      </div>
+    </div>
+  </div>
+</div>
